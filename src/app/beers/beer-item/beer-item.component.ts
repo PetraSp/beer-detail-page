@@ -4,6 +4,7 @@ import { DrinksState } from '../store';
 import { ActivatedRoute } from '@angular/router';
 import { select, Store} from '@ngrx/store';
 import { getBeerById } from '../store/beers.selectors';
+import { fetchBeersListRequest } from '../store/beers.actions';
 
 @Component({
   selector: 'app-beer-item',
@@ -18,6 +19,7 @@ export class BeerItemComponent implements OnInit {
     const id = Number(this.route.snapshot.params.id);
     this.beer$ = this.store.pipe(select(getBeerById(id)));
     this.beer$.subscribe(e => console.log(e));
+    this.store.dispatch(fetchBeersListRequest());
   }
 
 }

@@ -11,8 +11,6 @@ const initialState: BeersState = {
 export const beersReducer = (state = initialState, action: GenericAction) => {
   switch (action.type) {
     case FETCH_BEERS_RESPONSE: {
-      console.log(state);
-      console.log(action);
       return <BeersState>{
         ...state,
         data: action.payload
