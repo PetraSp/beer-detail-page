@@ -19,6 +19,7 @@ export class BeerListComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(fetchBeersListRequest());
     this.beers$ = this.store.pipe(select(getBeersSelector));
+    this.beers$.subscribe(e => console.log(e));
   }
 
 }

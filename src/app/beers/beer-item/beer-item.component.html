@@ -1,3 +1,2 @@
-<p>
-  beer-item works!
-</p>
+<p *ngIf="!beer$">Loading...</p>
+<app-beer-detail [beer]="beer$ | async"></app-beer-detail>

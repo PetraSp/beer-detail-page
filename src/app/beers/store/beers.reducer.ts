@@ -4,14 +4,19 @@ import { GenericAction } from '../../models';
 
 
 const initialState: BeersState = {
-  beers: []
+  data: []
 };
 
 
 export const beersReducer = (state = initialState, action: GenericAction) => {
   switch (action.type) {
     case FETCH_BEERS_RESPONSE: {
-      return <BeersState>{...state, beers: action.payload}
+      console.log(state);
+      console.log(action);
+      return <BeersState>{
+        ...state,
+        data: action.payload
+      };
     }
 
     default:
