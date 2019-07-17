@@ -1,4 +1,5 @@
 <div class="beer"
+     [routerLink]="['/beers', beer.id]"
      *ngFor="let beer of (beers$ | async)">
   <h4>
     {{beer.name}}
