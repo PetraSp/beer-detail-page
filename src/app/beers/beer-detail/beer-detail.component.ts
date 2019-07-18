@@ -7,9 +7,12 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class BeerDetailComponent implements OnInit {
   @Input() beer
+  public result = null;
   constructor() { }
 
   ngOnInit() {
   }
-
+  gravityDifference(originalGravity, targetGravity) {
+    return this.result = originalGravity - targetGravity;
+  }
 }
