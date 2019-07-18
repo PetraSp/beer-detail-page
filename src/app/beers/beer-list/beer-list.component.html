@@ -1,6 +1,18 @@
+<div>Filter by:</div>
+<div>
+  <input type='text' [(ngModel)]= 'listFilter'/>
+</div>
+
+<div
+  *ngIf='listFilter'>
+  <div>
+    <h4>Filtered by: {{listFilter}}</h4>
+  </div>
+</div>
+
 <div class="beer"
      [routerLink]="['/beers', beer.id]"
-     *ngFor="let beer of (beers$ | async)">
+     *ngFor="let beer of filteredBeers">
   <h4>
     {{beer.name}}
   </h4>
@@ -9,3 +21,6 @@
   </p>
   <img src="{{beer.image_url}}">
 </div>
+
+
+
