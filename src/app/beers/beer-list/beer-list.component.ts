@@ -38,7 +38,6 @@ export class BeerListComponent implements OnInit, OnDestroy {
     });
   }
 
-
   performFilter(filterBy: string) {
     filterBy = filterBy.toLocaleLowerCase();
     return this.beers.filter( beer  =>

@@ -1,23 +1,35 @@
-<div *ngIf="beer">
-{{beer.name}}
-{{beer.description}}
-{{beer.first_brewed}}
-<img src="{{beer.image_url}}">
-{{beer.food_pairing}}
-{{beer.abv}}
-{{beer.ibu}}
-{{beer.contributed_by}}
+<div class="beer-container">
+  <div *ngIf="beer" class="beer-wrapper">
+    <img src="{{beer.image_url}}">
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>{{beer.name}}</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>{{beer.description}}</td>
+      </tr>
+      <tr>
+        <td>First Brewed</td>
+        <td>{{beer.first_brewed}}</td>
+      </tr>
+      <tr>
+        <td>Foods that pair with that beer</td>
+        <td>{{beer.food_pairing}}}</td>
+      </tr>
+      <tr>
+        <td>Abv and Ibu</td>
+        <td>{{beer.abv}}, {{beer.ibu}}</td>
+      </tr>
+      <tr>
+        <td>Contributor/s</td>
+        <td>{{beer.contributed_by}}</td>
+      </tr>
+    </table>
+  </div>
 </div>
-
 <p>Calculate the difference between original and final gravity </p>
 <button (click)="gravityDifference(beer.target_og, beer.target_fg)" type="button">Calculate!</button>
 <p>Result: {{result}}</p>
 
-
-<!--Name-->
-<!-- - Description-->
-<!-- - First Brewed-->
-<!-- - Image-->
-<!-- - Foods that pair with that beer-->
-<!-- - Abv and Ibu-->
-<!-- - Contributor/s-->

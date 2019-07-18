@@ -1,0 +1,34 @@
+.beer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.beer-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  border-radius: 10px;
+  min-width: 100%;
+  height: 220px;
+}
+
+
+table {
+  margin-left: 30px;
+}
+
+
+@media screen and (min-width: 1200px) {
+  max-width: 70%;
+  margin: 50px auto;
+
+  img {
+    min-width: 280px;
+    height: 280px;
+  }
+
+}
