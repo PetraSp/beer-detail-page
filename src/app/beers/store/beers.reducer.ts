@@ -1,10 +1,11 @@
 import { BeersState } from './beers.state-type';
-import { FETCH_BEERS_RESPONSE } from './beers.actions';
+import { FETCH_BEER_BY_ID_RESPONSE, FETCH_BEERS_RESPONSE } from './beers.actions';
 import { GenericAction } from '../../models';
 
 
 const initialState: BeersState = {
-  data: []
+  data: [],
+  id: null
 };
 
 
@@ -14,6 +15,12 @@ export const beersReducer = (state = initialState, action: GenericAction) => {
       return <BeersState>{
         ...state,
         data: action.payload
+      };
+    }
+    case FETCH_BEER_BY_ID_RESPONSE: {
+      return <BeersState>{
+        ...state,
+        id: action.payload
       };
     }
 

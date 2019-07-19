@@ -1,10 +1,16 @@
 import {Injectable} from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import {catchError, map, switchMap} from 'rxjs/operators'
+import {catchError, map, switchMap} from 'rxjs/operators';
 import { BeersService } from '../beers.service';
-import { FETCH_BEERS_REQUEST, fetchBeersListFailed, fetchBeersListResponse } from './beers.actions';
+import {
+  FETCH_BEER_BY_ID_REQUEST,
+  FETCH_BEERS_REQUEST,
+  fetchBeerByIdFailed,
+  fetchBeerByIdResponse,
+  fetchBeersListFailed,
+  fetchBeersListResponse
+} from './beers.actions';
 import { of } from 'rxjs/index';
-
 
 @Injectable()
 export class BeersEffects {
@@ -20,4 +26,14 @@ export class BeersEffects {
       map((res) => fetchBeersListResponse(res)),
       catchError(() => of(fetchBeersListFailed()))
     );
+
+  @Effect() fetchBeerById = this.actions$
+    .pipe(
+      ofType(FETCH_BEER_BY_ID_REQUEST),
+      switchMap((action) => this.beersService.getBeerById(action.payload)),
+      map((res) => fetchBeerByIdResponse(res)),
+      catchError(() => of(fetchBeerByIdFailed()))
+    );
 }
+
+

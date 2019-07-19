@@ -5,10 +5,11 @@ import { BeersState } from './beers.state-type';
 
 
 export const getBeers = (state: BeersState) => state.data;
+export const getBeersById = (state: BeersState) => state.id;
 
 export const beersState = createSelector(
   getDrinksState,
-  (state: DrinksState) => state.beers
+  (state: DrinksState) => state.beersState
 );
 
 export const getBeersSelector = createSelector(
@@ -16,9 +17,14 @@ export const getBeersSelector = createSelector(
   getBeers
 );
 
-export const getBeerById = (id: number) => createSelector(
-  getBeersSelector,
-  (beers) => {
-    return beers.find(b => b.id === id);
-  }
+// export const getBeerById = (id: number) => createSelector(
+//   getBeersSelector,
+//   (beers) => {
+//     return beers.find(b => b.id === id);
+//   }
+// );
+
+export const getBeerByIdSelector = createSelector(
+  beersState,
+  getBeersById
 );

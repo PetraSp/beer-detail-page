@@ -20,7 +20,12 @@
       </tr>
       <tr>
         <td>Abv and Ibu</td>
-        <td>{{beer.abv}}, {{beer.ibu}}</td>
+        <td>
+        <div class="labels">
+          <span>{{beer.abv}}</span>
+          <span>{{beer.ibu}}</span>
+        </div>
+        </td>
       </tr>
       <tr>
         <td>Contributor/s</td>
@@ -30,7 +35,7 @@
   </div>
   <div>
     <p>Calculate the difference between original and final gravity </p>
-    <button (click)="gravityDifference(beer.target_og, beer.target_fg)" type="button">Calculate!</button>
+    <button (click)="gravityDifference(beer.target_og, beer.target_fg)" class="calc-btn" type="button">Calculate!</button>
     <p>Result: {{result}}</p>
   </div>
 </div>

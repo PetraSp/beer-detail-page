@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { DrinksState } from '../store';
 import { ActivatedRoute } from '@angular/router';
 import { select, Store} from '@ngrx/store';
-import { getBeerById } from '../store/beers.selectors';
-import { fetchBeersListRequest } from '../store/beers.actions';
+import { getBeerByIdSelector } from '../store/beers.selectors';
+import { fetchBeerByIdRequest } from '../store/beers.actions';
 
 @Component({
   selector: 'app-beer-item',
@@ -17,9 +17,9 @@ export class BeerItemComponent implements OnInit {
 
   ngOnInit() {
     const id = Number(this.route.snapshot.params.id);
-    this.beer$ = this.store.pipe(select(getBeerById(id)));
+    this.store.dispatch(fetchBeerByIdRequest(id));
+    this.beer$ = this.store.pipe(select(getBeerByIdSelector()));
     this.beer$.subscribe(e => console.log(e));
-    this.store.dispatch(fetchBeersListRequest());
   }
 
 }

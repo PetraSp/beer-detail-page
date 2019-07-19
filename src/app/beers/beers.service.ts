@@ -12,4 +12,8 @@ export class BeersService {
   public getBeers(): Observable<any> {
     return this.http.get('https://api.punkapi.com/v2/beers');
   }
+
+  public getBeerById(id): Observable<any> {
+    return this.http.get(`https://api.punkapi.com/v2/beers/{id}`);
+  }
 }
