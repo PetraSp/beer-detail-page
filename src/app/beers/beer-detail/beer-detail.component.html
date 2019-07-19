@@ -28,8 +28,9 @@
       </tr>
     </table>
   </div>
+  <div>
+    <p>Calculate the difference between original and final gravity </p>
+    <button (click)="gravityDifference(beer.target_og, beer.target_fg)" type="button">Calculate!</button>
+    <p>Result: {{result}}</p>
+  </div>
 </div>
-<p>Calculate the difference between original and final gravity </p>
-<button (click)="gravityDifference(beer.target_og, beer.target_fg)" type="button">Calculate!</button>
-<p>Result: {{result}}</p>
-
