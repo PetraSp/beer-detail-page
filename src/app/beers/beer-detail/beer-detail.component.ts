@@ -13,6 +13,6 @@ export class BeerDetailComponent implements OnInit {
   ngOnInit() {
   }
   gravityDifference(originalGravity, targetGravity) {
-    return this.result = originalGravity - targetGravity;
+    return this.result = (originalGravity - targetGravity).toFixed(1);
   }
 }
