@@ -3,9 +3,17 @@ $width: 200px;
 $height: 300px;
 
 .search {
-  position: absolute;
-  top: 60px;
-  left: 60px;
+  position: fixed;
+  top: 18px;
+  left: calc(50vw - 110px);
+  background-color: white;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+  input{
+    margin: 10px;
+  }
 }
 
 :host {
@@ -35,8 +43,13 @@ $height: 300px;
     }
   }
 
-  @media screen and (min-width: 1420px) {
+  @media only screen and (min-width: 1420px) {
     max-width: 70%;
     margin: 50px auto;
+
+    .search {
+      left: 20px;
+      top: 37px;
+    }
   }
 }
