@@ -5,7 +5,7 @@ import { BeersState } from './beers.state-type';
 
 
 export const getBeers = (state: BeersState) => state.data;
-export const getBeersById = (state: BeersState) => state.id;
+export const getBeersById = (state: BeersState) => state.selectedBeer;
 
 export const beersState = createSelector(
   getDrinksState,

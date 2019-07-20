@@ -11,6 +11,7 @@ import {
   fetchBeersListResponse
 } from './beers.actions';
 import { of } from 'rxjs/index';
+import { GenericAction } from '../../models';
 
 @Injectable()
 export class BeersEffects {
@@ -21,7 +22,7 @@ export class BeersEffects {
 
   @Effect() fetchBeers = this.actions$
     .pipe(
-      ofType(FETCH_BEERS_REQUEST),
+      ofType<GenericAction>(FETCH_BEERS_REQUEST),
       switchMap(() => this.beersService.getBeers()),
       map((res) => fetchBeersListResponse(res)),
       catchError(() => of(fetchBeersListFailed()))
@@ -29,11 +30,15 @@ export class BeersEffects {
 
   @Effect() fetchBeerById = this.actions$
     .pipe(
-      ofType(FETCH_BEER_BY_ID_REQUEST),
+      ofType<GenericAction>(FETCH_BEER_BY_ID_REQUEST),
       switchMap((action) => this.beersService.getBeerById(action.payload)),
+      // console.log(action.payload)
       map((res) => fetchBeerByIdResponse(res)),
       catchError(() => of(fetchBeerByIdFailed()))
     );
 }
+
+
+
 
 

@@ -18,8 +18,7 @@ export class BeerItemComponent implements OnInit {
   ngOnInit() {
     const id = Number(this.route.snapshot.params.id);
     this.store.dispatch(fetchBeerByIdRequest(id));
-    this.beer$ = this.store.pipe(select(getBeerByIdSelector()));
+    this.beer$ = this.store.pipe(select(getBeerByIdSelector));
     this.beer$.subscribe(e => console.log(e));
   }
-
 }

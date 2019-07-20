@@ -5,7 +5,7 @@ import { GenericAction } from '../../models';
 
 const initialState: BeersState = {
   data: [],
-  id: null
+  selectedBeer: {}
 };
 
 
@@ -18,9 +18,11 @@ export const beersReducer = (state = initialState, action: GenericAction) => {
       };
     }
     case FETCH_BEER_BY_ID_RESPONSE: {
+      console.log('existing state: ' + JSON.stringify(state));
+      console.log('payload: ' + action.payload)
       return <BeersState>{
         ...state,
-        id: action.payload
+        selectedBeer: action.payload[0]
       };
     }
 
@@ -28,3 +30,5 @@ export const beersReducer = (state = initialState, action: GenericAction) => {
       return state;
   }
 };
+
+
