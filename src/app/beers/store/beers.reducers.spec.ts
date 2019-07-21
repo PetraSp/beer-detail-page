@@ -8,7 +8,7 @@ describe('beersReducer', () => {
 
   const initialState: BeersState = {
     data: [],
-    id: null
+    selectedBeer: Object
   };
 
   describe('FETCH_BEERS_RESPONSE', () => {
@@ -36,7 +36,7 @@ describe('beersReducer', () => {
 
       const result = beersReducer(initialState, action);
 
-      expect(result.id).toEqual(payload);
+      expect(result.selectedBeer).toEqual(payload);
     });
   });
 });

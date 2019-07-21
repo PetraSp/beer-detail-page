@@ -4,13 +4,13 @@ import { beersReducer } from './beers.reducer';
 
 
 export interface DrinksState {
-  beersState: BeersState;
+  beers: BeersState;
 }
 
 export const beersReducers: ActionReducerMap<DrinksState> = {
-  beersState: beersReducer
+  beers: beersReducer
 };
 
-export const getDrinksState = createFeatureSelector<DrinksState>(
+export const getDrinksSelector = createFeatureSelector<DrinksState>(
   'drinks'
 );

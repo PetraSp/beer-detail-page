@@ -32,7 +32,6 @@ export class BeersEffects {
     .pipe(
       ofType<GenericAction>(FETCH_BEER_BY_ID_REQUEST),
       switchMap((action) => this.beersService.getBeerById(action.payload)),
-      // console.log(action.payload)
       map((res) => fetchBeerByIdResponse(res)),
       catchError(() => of(fetchBeerByIdFailed()))
     );

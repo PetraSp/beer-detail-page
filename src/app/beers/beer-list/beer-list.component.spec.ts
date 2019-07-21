@@ -4,22 +4,27 @@ import { BeerListComponent } from './beer-list.component';
 import { Store, StoreModule } from '@ngrx/store';
 import { DrinksState } from '../store';
 import { fetchBeersListRequest } from '../store/beers.actions';
+import {RouterModule} from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {APP_BASE_HREF} from '@angular/common';
 
 
 describe('BeerListComponent', () => {
   let component: BeerListComponent;
   let store: Store<DrinksState>;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        StoreModule.forRoot({})
+        StoreModule.forRoot({}),
+        RouterModule.forRoot([]),
+        FormsModule
       ],
       declarations: [
         BeerListComponent
       ],
       providers: [
-        Store
+        Store,
+        { provide: APP_BASE_HREF, useValue : '/beers' }
       ]
     });
 
@@ -39,6 +44,8 @@ describe('BeerListComponent', () => {
 
       expect(store.dispatch).toHaveBeenCalledWith(fetchBeersListRequest());
       expect(component.beers$).toBeDefined();
-    })
-  })
+
+      component.ngOnDestroy();
+    });
+  });
 });

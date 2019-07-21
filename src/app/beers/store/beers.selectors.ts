@@ -1,30 +1,23 @@
 import { createSelector } from '@ngrx/store';
 
-import { DrinksState, getDrinksState } from './index';
+import { DrinksState, getDrinksSelector } from './index';
 import { BeersState } from './beers.state-type';
 
-
-export const getBeers = (state: BeersState) => state.data;
-export const getBeersById = (state: BeersState) => state.selectedBeer;
-
-export const beersState = createSelector(
-  getDrinksState,
-  (state: DrinksState) => state.beersState
-);
+export const getBeersData = (state: BeersState) => state.data;
+export const getSelectedBeer = (state: BeersState) => state.selectedBeer;
+export const getBeers = (state: DrinksState) => state.beers;
 
 export const getBeersSelector = createSelector(
-  beersState,
+  getDrinksSelector,
   getBeers
 );
 
-// export const getBeerById = (id: number) => createSelector(
-//   getBeersSelector,
-//   (beers) => {
-//     return beers.find(b => b.id === id);
-//   }
-// );
+export const getBeersDataSelector = createSelector(
+  getBeersSelector,
+  getBeersData
+);
 
-export const getBeerByIdSelector = createSelector(
-  beersState,
-  getBeersById
+export const getSelectedBeerSelector = createSelector(
+  getBeersSelector,
+  getSelectedBeer
 );

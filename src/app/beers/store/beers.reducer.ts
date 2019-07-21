@@ -8,8 +8,7 @@ const initialState: BeersState = {
   selectedBeer: {}
 };
 
-
-export const beersReducer = (state = initialState, action: GenericAction) => {
+export const beersReducer = (state: BeersState = initialState, action: GenericAction) => {
   switch (action.type) {
     case FETCH_BEERS_RESPONSE: {
       return <BeersState>{
@@ -18,8 +17,6 @@ export const beersReducer = (state = initialState, action: GenericAction) => {
       };
     }
     case FETCH_BEER_BY_ID_RESPONSE: {
-      console.log('existing state: ' + JSON.stringify(state));
-      console.log('payload: ' + action.payload)
       return <BeersState>{
         ...state,
         selectedBeer: action.payload[0]

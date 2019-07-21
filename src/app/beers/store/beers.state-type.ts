@@ -1,5 +1,4 @@
 export interface BeersState {
-  data: Array<any>;
-  selectedBeer: any;
+  data: Array<Object>;
+  selectedBeer: Object;
 }
-
