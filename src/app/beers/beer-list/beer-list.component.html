@@ -13,8 +13,5 @@
   <p>
     {{beer.tagline}}
   </p>
-  <img src="{{beer.image_url}}">
+  <img src="{{ beer.image_url === null ? 'https://images.punkapi.com/v2/keg.png' : beer.image_url}}">
 </div>
-
-
-

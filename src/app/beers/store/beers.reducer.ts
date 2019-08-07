@@ -13,7 +13,7 @@ export const beersReducer = (state: BeersState = initialState, action: GenericAc
     case FETCH_BEERS_RESPONSE: {
       return <BeersState>{
         ...state,
-        data: action.payload
+        data: state.data.concat(action.payload)
       };
     }
     case FETCH_BEER_BY_ID_RESPONSE: {

@@ -2,7 +2,7 @@
 
 <div class="beer-container">
   <div *ngIf="beer" class="beer-wrapper">
-    <img src="{{beer.image_url}}">
+    <img src="{{ beer.image_url === null ? 'https://images.punkapi.com/v2/keg.png' : beer.image_url}}">
     <table>
       <tr>
         <td>Name</td>

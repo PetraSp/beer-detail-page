@@ -23,7 +23,7 @@ export class BeersEffects {
   @Effect() fetchBeers = this.actions$
     .pipe(
       ofType<GenericAction>(FETCH_BEERS_REQUEST),
-      switchMap(() => this.beersService.getBeers()),
+      switchMap((action) => this.beersService.getBeers(action.payload)),
       map((res) => fetchBeersListResponse(res)),
       catchError(() => of(fetchBeersListFailed()))
     );

@@ -13,8 +13,8 @@ export const FETCH_BEER_BY_ID_RESPONSE = '[Beers] fetch a beer response';
 export const FETCH_BEER_BY_ID_FAILED = '[Beers] fetch a beer failed';
 
 
-export const fetchBeersListRequest = (): Action => {
-  return new GenericAction(FETCH_BEERS_REQUEST);
+export const fetchBeersListRequest = (page: number): Action => {
+  return new GenericAction(FETCH_BEERS_REQUEST, page);
 };
 
 export const fetchBeersListResponse = (beers): Action => {
