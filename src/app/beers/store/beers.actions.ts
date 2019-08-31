@@ -11,10 +11,11 @@ export const FETCH_BEERS_FAILED = '[Beers] fetch list of beers failed';
 export const FETCH_BEER_BY_ID_REQUEST = '[Beers] fetch a beer request';
 export const FETCH_BEER_BY_ID_RESPONSE = '[Beers] fetch a beer response';
 export const FETCH_BEER_BY_ID_FAILED = '[Beers] fetch a beer failed';
+export const BEER_LIST_RESET = '[Beers] reset beer list';
 
 
-export const fetchBeersListRequest = (page: number): Action => {
-  return new GenericAction(FETCH_BEERS_REQUEST, page);
+export const fetchBeersListRequest = (params): Action => {
+  return new GenericAction(FETCH_BEERS_REQUEST, params);
 };
 
 export const fetchBeersListResponse = (beers): Action => {
@@ -23,6 +24,10 @@ export const fetchBeersListResponse = (beers): Action => {
 
 export const fetchBeersListFailed = (): Action => {
   return new GenericAction(FETCH_BEERS_FAILED);
+};
+
+export const resetBeerList = (): Action => {
+  return new GenericAction(BEER_LIST_RESET);
 };
 
 

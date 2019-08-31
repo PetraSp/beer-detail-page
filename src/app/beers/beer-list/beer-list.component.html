@@ -1,12 +1,12 @@
 <div class="search">Search beer by name:
 <div>
-  <input type='text' [(ngModel)]= 'listFilter'/>
+  <input type='text' [(ngModel)]= 'listSearch'/>
 </div>
 </div>
 
 <div class="beer"
      [routerLink]="['/beers', beer.id]"
-     *ngFor="let beer of filteredBeers">
+     *ngFor="let beer of beers">
   <h4>
     {{beer.name}}
   </h4>

@@ -1,5 +1,5 @@
 import { BeersState } from './beers.state-type';
-import { FETCH_BEER_BY_ID_RESPONSE, FETCH_BEERS_RESPONSE } from './beers.actions';
+import {BEER_LIST_RESET, FETCH_BEER_BY_ID_RESPONSE, FETCH_BEERS_RESPONSE} from './beers.actions';
 import { GenericAction } from '../../models';
 
 
@@ -15,6 +15,9 @@ export const beersReducer = (state: BeersState = initialState, action: GenericAc
         ...state,
         data: state.data.concat(action.payload)
       };
+    }
+    case BEER_LIST_RESET: {
+      return initialState;z
     }
     case FETCH_BEER_BY_ID_RESPONSE: {
       return <BeersState>{

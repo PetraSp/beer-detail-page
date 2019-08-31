@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { DrinksState } from '../store';
 import { Observable, Subscription } from 'rxjs/index';
 import { getBeersDataSelector } from '../store/beers.selectors';
-import { fetchBeersListRequest } from '../store/beers.actions';
+import {fetchBeersListRequest, resetBeerList} from '../store/beers.actions';
 
 const LOAD_HEIGHT = 849;
 
@@ -16,42 +16,39 @@ export class BeerListComponent implements OnInit, OnDestroy {
 
   public beers$: Observable<any>;
   public beers = [];
-  public filteredBeers = [];
   public beersSubscription: Subscription;
-  public _listFilter = '';
+  public _listSearch = '';
   public currentPage = 1;
 
-  get listFilter(): string {
-    return this._listFilter;
+  get listSearch(): string {
+    return this._listSearch;
   }
 
-  set listFilter(value: string) {
-    this._listFilter = value;
-    this.filteredBeers = this.listFilter ? this.performFilter(this.listFilter) : this.beers;
+  set listSearch(value: string) {
+    this._listSearch = value;
+    this.currentPage = 1;
+    const params = value === '' ? {'page': this.currentPage} : {'page': this.currentPage, 'beer_name': value};
+
+    this.store.dispatch(resetBeerList());
+    this.store.dispatch(fetchBeersListRequest(params));
   }
 
   constructor(private store: Store<DrinksState>) { }
 
   ngOnInit() {
     window.addEventListener('scroll', this.onScroll);
-    this.store.dispatch(fetchBeersListRequest(this.currentPage));
+    this.store.dispatch(fetchBeersListRequest({'page': this.currentPage}));
     this.beers$ = this.store.pipe(select(getBeersDataSelector));
     this.beersSubscription = this.beers$.subscribe(beers => {
       this.beers = beers;
-      this.filteredBeers = this.beers;
     });
   }
 
-  performFilter(filterBy: string) {
-    filterBy = filterBy.toLocaleLowerCase();
-    return this.beers.filter( beer  =>
-     beer.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
-  }
-
   onScroll = () =>  {
+    const params = this._listSearch === '' ? {'page': this.currentPage} : {'page': this.currentPage, 'beer_name': this._listSearch};
     if (window.pageYOffset > LOAD_HEIGHT * this.currentPage) {
       this.currentPage = this.currentPage + 1;
-      this.store.dispatch(fetchBeersListRequest(this.currentPage));
+      this.store.dispatch(fetchBeersListRequest(params));
     }
   };
 
