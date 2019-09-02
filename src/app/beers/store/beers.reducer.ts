@@ -17,7 +17,7 @@ export const beersReducer = (state: BeersState = initialState, action: GenericAc
       };
     }
     case BEER_LIST_RESET: {
-      return initialState;z
+      return initialState;
     }
     case FETCH_BEER_BY_ID_RESPONSE: {
       return <BeersState>{
